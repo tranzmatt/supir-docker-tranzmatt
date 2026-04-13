@@ -13,7 +13,7 @@ RUN python3 -m venv --system-site-packages /venv
 # Clone the git repo of SUPIR
 ARG SUPIR_COMMIT
 WORKDIR /
-RUN git clone https://github.com/ashleykleynhans/SUPIR.git
+RUN git clone https://github.com/Fanghua-Yu/SUPIR
 
 # Install the dependencies for SUPIR
 ARG INDEX_URL
