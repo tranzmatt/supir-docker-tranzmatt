@@ -19,13 +19,14 @@
 ## Installs
 
 * Ubuntu 22.04 LTS
-* CUDA 11.8
+* CUDA 12.1
 * Python 3.10.12
 * [SUPIR](
   https://github.com/ashleykleynhans/SUPIR)
-* Torch 2.3.0
-* xformers 0.0.26.post1
-* Jupyter Lab
+* Torch 2.3.1
+* xformers 0.0.27
+* [Jupyter Lab](https://github.com/jupyterlab/jupyterlab)
+* [code-server](https://github.com/coder/code-server)
 * [runpodctl](https://github.com/runpod/runpodctl)
 * [OhMyRunPod](https://github.com/kodxana/OhMyRunPod)
 * [RunPod File Uploader](https://github.com/kodxana/RunPod-FilleUploader)
@@ -72,9 +73,9 @@ docker run -d \
   --gpus all \
   -v /workspace \
   -p 3000:3001 \
+  -p 7777:7777 \
   -p 8888:8888 \
   -p 2999:2999 \
-  -e VENV_PATH="/workspace/venvs/SUPIR" \
   ashleykza/supir:latest
 ```
 
@@ -97,17 +98,18 @@ You can obviously substitute the image name and tag with your own.
 | Connect Port | Internal Port | Description          |
 |--------------|---------------|----------------------|
 | 3000         | 3001          | SUPIR                |
+| 7777         | 7777          | Code Server          |
 | 8888         | 8888          | Jupyter Lab          |
 | 2999         | 2999          | RunPod File Uploader |
 
 ## Environment Variables
 
-| Variable             | Description                                  | Default                |
-|----------------------|----------------------------------------------|------------------------|
-| VENV_PATH            | Set the path for the Python venv for the app | /workspace/venvs/SUPIR |
-| JUPYTER_LAB_PASSWORD | Set a password for Jupyter lab               | not set - no password  |
-| DISABLE_AUTOLAUNCH   | Disable SUPIR from launching automatically   | (not set)              |
-| NO_GPU_OPTIMIZATION  | Disable GPU optimization for A100/H100       | (not set)              |
+| Variable             | Description                                      | Default                |
+|----------------------|--------------------------------------------------|------------------------|
+| JUPYTER_LAB_PASSWORD | Set a password for Jupyter lab                   | not set - no password  |
+| DISABLE_AUTOLAUNCH   | Disable SUPIR from launching automatically       | (not set)              |
+| DISABLE_SYNC         | Disable syncing if using a RunPod network volume | (not set)              |
+| NO_GPU_OPTIMIZATION  | Disable GPU optimization for A100/H100           | (not set)              |
 
 ## Logs
 
